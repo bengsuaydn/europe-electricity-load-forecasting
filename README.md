@@ -1,6 +1,3 @@
-
-Çukurova University Computer Engineering - Data Science-Machine Learning Project
-
 #  Europe Electricity Load Forecasting
 
 This project focuses on analyzing European electricity load data and developing predictive models for future demand.
@@ -21,11 +18,11 @@ This project focuses on analyzing European electricity load data and developing 
 
 | Group | Task | Members |
 | :--- | :--- | :--- |
-| **Group 1** | Data Cleaning | |
-| **Group 2** | Feature Engineering | |
-| **Group 3** | EDA (Analysis) | |
-| **Group 4** | Modeling | |
-| **Group 5** | Documentation | |
+| **Group 1** | Data Cleaning | Elvin, Alperen |
+| **Group 2** | Feature Engineering | Elçin, Rıza, Behzat |
+| **Group 3** | EDA (Analysis) | Melisa, Çağrı, Hacı, Asude |
+| **Group 4** | Modeling | Akif, Bengi, Ekrem, Emre |
+| **Group 5** | Documentation | Tofiq, Kamal |
 
 ---
 
