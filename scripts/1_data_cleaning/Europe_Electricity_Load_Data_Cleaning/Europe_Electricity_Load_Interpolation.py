@@ -7,7 +7,7 @@ import numpy as np
 #   Task: Group 1 (Data Cleaning)
 #
 #   Description:
-#   This script processes and cleans hourly electricity load data (>2M rows). 
+#   This script processes and cleans hourly electricity load data (more than 2M rows). 
 #   It performs the following key operations to prepare the data for modeling:
 #     1. Formats datetime objects and removes redundant columns.
 #     2. Handles physical sensor failures by replacing exact 0.0 values with NaN.
