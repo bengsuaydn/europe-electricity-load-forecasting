@@ -15,15 +15,18 @@ def load_data():
     Proje dizin yapısına uygun göreceli (relative) dosya yolu kullanılmıştır.
     """
     file_path = 'data/engineered_data.csv' 
+    # CSV okuma işlemi (Semicolon ayırıcı ve veri tipi optimizasyonu ile)
     df = pd.read_csv(file_path, sep=';', low_memory=False)
     return df
 
 try:
-    # Veri yükleme ve örneklem oluşturma
+    # Veri yükleme işlemi
     df = load_data()
     
-    # Performans optimizasyonu için 10.000 satırlık rastgele örneklem (sampling)
-    df_sample = df.sample(n=10000, random_state=42)
+    # HATA DÜZELTME: Veri seti 10.000 satırdan küçükse hata vermemesi için min() kontrolü eklendi.
+    # Performans optimizasyonu için dinamik örneklem (sampling) yapısı.
+    sample_size = min(len(df), 10000)
+    df_sample = df.sample(n=sample_size, random_state=42)
 
     # --- VERİ ÖN İŞLEME: Aykırı Değer (Outlier) Analizi ---
     # Grafiklerin genel dağılımını bozmamak adına 0.01 ve 0.98 kuantil aralığı filtrelenmiştir.
@@ -35,8 +38,8 @@ try:
     # Kullanıcı etkileşimi için yan panel (sidebar) filtreleri
     st.sidebar.header("🔍 Veri Filtreleme Paneli")
     selected_year = st.sidebar.multiselect("Analiz Edilecek Yıl Seçimi", 
-                                          options=df_sample['year'].unique(), 
-                                          default=df_sample['year'].unique())
+                                          options=sorted(df_sample['year'].unique()), 
+                                          default=sorted(df_sample['year'].unique()))
     
     df_filtered = df_sample[df_sample['year'].isin(selected_year)]
 
@@ -45,6 +48,7 @@ try:
 
     with col1:
         st.subheader("📈 Zaman Serisi Trend Analizi")
+        # İlk 1000 gözlem üzerinden genel trendin izlenmesi
         fig1 = px.line(df_filtered.head(1000).reset_index(), y="Value", title="Zaman İçindeki Değişim (İlk 1000 Gözlem)")
         st.plotly_chart(fig1, use_container_width=True)
 
