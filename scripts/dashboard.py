@@ -9,7 +9,7 @@ st.markdown("Aykırı değerlerden arındırılmış, tertemiz kontrol paneli!")
 
 @st.cache_data
 def load_data():
-    file_path = r'C:\Users\Çağrı\Downloads\engineered_data.txt'
+    file_path = 'data/engineered_data.txt'
     df = pd.read_csv(file_path, sep=';', low_memory=False)
     return df
 
